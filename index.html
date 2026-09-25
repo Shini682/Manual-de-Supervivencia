@@ -1054,6 +1054,74 @@
             box-shadow: 0 0 15px #D10020, 4px 4px 0 #1A202C;
             transform: scale(1.03);
         }
+
+        /* --- ESTILOS ESPECÍFICOS VIÑETAS 11, 12 y 13 (LINTERNA VERDE) --- */
+        .gl-bg {
+            background-color: #050505; /* Negro espacio profundo */
+            background-image: 
+                /* Resplandor del anillo en el centro */
+                radial-gradient(circle at center, rgba(12, 242, 33, 0.15) 0%, transparent 70%),
+                /* Anillos de energía concéntricos */
+                repeating-radial-gradient(circle at center, rgba(12, 242, 33, 0.05) 0, rgba(12, 242, 33, 0.05) 20px, transparent 20px, transparent 40px);
+        }
+
+        .gl-panel {
+            border-color: #0cf221; /* Verde Neón puro */
+            border-width: 6px;
+            /* Resplandor interno y externo brutal */
+            box-shadow: 0 0 30px rgba(12, 242, 33, 0.4) inset, 0 0 30px rgba(12, 242, 33, 0.5); 
+        }
+
+        .gl-title {
+            color: #0cf221;
+            font-family: 'Bangers', cursive;
+            text-transform: uppercase;
+            /* Texto brillante radiactivo */
+            text-shadow: 0 0 10px #0cf221, 0 0 20px #0cf221, 0 0 40px #0cf221, 4px 4px 0 #000;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            margin-bottom: 20px;
+            text-align: center;
+            letter-spacing: 3px;
+        }
+
+        /* Contenedores creados con pura energía de voluntad */
+        .gl-box {
+            background-color: rgba(5, 5, 5, 0.85); /* Casi negro translúcido */
+            border: 4px solid #0cf221;
+            padding: 25px;
+            width: 100%;
+            max-width: 750px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 10;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(12, 242, 33, 0.3);
+        }
+
+        .gl-list li {
+            background-color: #0a0a0a !important;
+            border: 1px solid #0cf221 !important;
+            color: #fff;
+            text-shadow: 0 0 5px rgba(12, 242, 33, 0.5);
+        }
+
+        .gl-action {
+            background-color: #050505 !important;
+            color: #0cf221 !important;
+            border-color: #0cf221 !important;
+            text-align: center;
+            text-transform: uppercase;
+            box-shadow: 0 0 15px rgba(12, 242, 33, 0.4);
+            transition: all 0.3s;
+        }
+
+        .gl-action:hover {
+            background-color: #0cf221 !important;
+            color: #000 !important;
+            box-shadow: 0 0 25px #0cf221, 0 0 50px #0cf221;
+            transform: scale(1.05);
+        }
         
         @media (max-width: 768px) {
             .panel-header { grid-template-columns: 1fr; justify-items: center; gap: 6px; }
@@ -1383,6 +1451,62 @@
                     </div>
                 </div>
                 
+            </div>
+        </div>
+        <!-- DIAPOSITIVA 11 (LINTERNA VERDE) -->
+        <div class="slide">
+            <div class="comic-panel action-panel gl-bg gl-panel" style="justify-content: center; align-items: center; padding: 30px; overflow: visible;">
+                <div class="narrator-box" style="background-color: #050505; color: #0cf221; top: -20px; left: 30px; border-color: #0cf221; box-shadow: 0 0 10px #0cf221;">Preparativos Finales...</div>
+                
+                <h2 class="gl-title z-up">CHECKLIST DE INICIO ✅</h2>
+                
+                <div class="gl-box z-up">
+                    <ul class="content-list gl-list" style="margin-bottom: 0;">
+                        <li><strong style="color: #0cf221; text-shadow: none;">[✓]</strong> Conozco mi PBM y pagué matrícula.</li>
+                        <li><strong style="color: #0cf221; text-shadow: none;">[✓]</strong> Sé ingresar al SIA.</li>
+                        <li><strong style="color: #0cf221; text-shadow: none;">[✓]</strong> Ubiqué mi salón (para no perderme).</li>
+                    </ul>
+                    <div class="action-box gl-action">
+                        <strong>¡MISIÓN! 🎯</strong> Completa cada punto antes de tu primera semana de clases.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DIAPOSITIVA 12 (LINTERNA VERDE) -->
+        <div class="slide">
+            <div class="comic-panel action-panel gl-bg gl-panel" style="justify-content: center; align-items: center; padding: 30px; overflow: visible;">
+                <div class="narrator-box" style="background-color: #050505; color: #0cf221; top: -20px; left: 30px; border-color: #0cf221; box-shadow: 0 0 10px #0cf221;">El Camino del Héroe...</div>
+                
+                <h2 class="gl-title z-up">CONCLUSIÓN 🏁</h2>
+                
+                <div class="gl-box z-up" style="text-align: center;">
+                    <p style="font-size: clamp(1.2rem, 3vw, 1.5rem); color: #fff; line-height: 1.5; margin-bottom: 15px; text-shadow: 0 0 5px rgba(12,242,33,0.3);">
+                        Sobrevivir a la UNAL no requiere magia, solo la <strong style="color: #0cf221; text-shadow: 0 0 10px #0cf221;">fuerza de voluntad</strong> para leer el calendario y conocer tus portales. 
+                    </p>
+                    <p style="font-size: clamp(1.1rem, 2.5vw, 1.3rem); color: #0cf221; font-weight: bold; text-shadow: 0 0 10px #0cf221;">¡El SIA es tu mejor Anillo de Poder!</p>
+                    
+                    <div class="action-box gl-action" style="margin-top: 15px;">
+                        <strong>¡MUY PRONTO! 🚀</strong> ¡Prepárate para conquistar tu carrera en la Universidad Nacional!
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DIAPOSITIVA 13 (LINTERNA VERDE - ENTREGA) -->
+        <div class="slide">
+            <div class="comic-panel action-panel gl-bg gl-panel" style="justify-content: center; align-items: center; padding: 30px; overflow: visible;">
+                <div class="narrator-box" style="background-color: #050505; color: #0cf221; top: -20px; left: 30px; border-color: #0cf221; box-shadow: 0 0 10px #0cf221;">Misión Cumplida...</div>
+                
+                <h2 class="gl-title z-up" style="font-size: clamp(3rem, 7vw, 5rem);">ENTREGABLE COMPLETADO 🎯</h2>
+                
+                <div class="gl-box z-up" style="text-align: center; border: none; background: transparent; box-shadow: none;">
+                    <p style="font-size: clamp(1.5rem, 3.5vw, 2rem); color: #fff; text-shadow: 0 0 15px #0cf221; line-height: 1.4;">
+                        <strong style="color: #0cf221;">Cátedra Nacional de Inducción</strong><br>
+                        Universidad Nacional de Colombia<br>
+                        Sede Manizales
+                    </p>
+                </div>
             </div>
         </div>
 
