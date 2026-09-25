@@ -126,18 +126,20 @@
 
         .character-crop img {
             position: absolute;
-            width: 300%;
-            height: 400%;
+            /* Hacemos "zoom" para sacar los bordes grises de la imagen fuera del contenedor */
+            width: 325%;
+            height: 430%;
             max-width: none;
         }
 
-        .face-normal { top: 0; left: 0; }              /* Fila 1, Columna 1 */
-        .face-confundido { top: -100%; left: -100%; }  /* Fila 2, Columna 2 */
-        .face-sorprendido { top: -100%; left: 0; }     /* Fila 2, Columna 1 */
-        .face-genio { top: -300%; left: -200%; }       /* Fila 4, Columna 3 */
-        .face-furioso { top: -200%; left: 0; }         /* Fila 3, Columna 1 */
-        .face-llorando { top: 0; left: -200%; }        /* Fila 1, Columna 3 */
-        .face-feliz { top: 0; left: -100%; }           /* Fila 1, Columna 2 */
+        /* Coordenadas calibradas para centrar la cara y ocultar las viñetas vecinas */
+        .face-normal      { top: -2%;    left: -4%; }    /* Fila 1, Columna 1 */
+        .face-confundido  { top: -110%;  left: -112%; }  /* Fila 2, Columna 2 */
+        .face-sorprendido { top: -110%;  left: -4%; }    /* Fila 2, Columna 1 */
+        .face-genio       { top: -325%;  left: -221%; }  /* Fila 4, Columna 3 */
+        .face-furioso     { top: -218%;  left: -4%; }    /* Fila 3, Columna 1 */
+        .face-llorando    { top: -2%;    left: -221%; }  /* Fila 1, Columna 3 */
+        .face-feliz       { top: -2%;    left: -112%; }  /* Fila 1, Columna 2 */
 
         h1, h2 {
             font-family: 'Bangers', cursive;
