@@ -287,16 +287,42 @@
             transform: skew(6deg) rotate(2deg); /* Endereza el contenido */
         }
 
+       /* Reubicamos el THWIP para que no se salga de la pantalla */
         .giant-burst {
-            font-size: clamp(2rem, 4vw, 3rem);
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
             padding: 15px 25px;
-            top: -30px;
-            right: -30px;
-            transform: scale(1.2) rotate(25deg);
+            top: 15px;      /* Coordenada positiva hacia adentro */
+            right: 15px;    /* Coordenada positiva hacia adentro */
             box-shadow: 6px 6px 0 var(--dark);
-            z-index: 40;
+            z-index: 60;
         }
 
+        /* Estilos y animación para el Batarang */
+        .batarang-prop {
+            display: block;
+            margin: 5px auto 15px auto;
+            width: 280px; /* ¡Mucho más grande! */
+            filter: drop-shadow(6px 6px 0px rgba(0,0,0,1));
+            cursor: crosshair; /* Cursor de apuntar */
+            position: relative;
+            z-index: 10;
+            transition: filter 0.2s;
+        }
+
+        /* Al pasar el mouse, vibra y la sombra se hace más intensa */
+        .batarang-prop:hover {
+            filter: drop-shadow(10px 10px 0px rgba(0,0,0,1));
+            animation: bat-shake 0.2s linear infinite both;
+        }
+
+        /* Keyframes de la vibración (mantenemos la inclinación base del panel) */
+        @keyframes bat-shake {
+            0% { transform: skew(6deg) rotate(2deg) scale(1.05); }
+            25% { transform: skew(6deg) rotate(-3deg) scale(1.05) translate(-2px, 2px); }
+            50% { transform: skew(6deg) rotate(6deg) scale(1.05) translate(2px, -2px); }
+            75% { transform: skew(6deg) rotate(-3deg) scale(1.05) translate(-2px, -2px); }
+            100% { transform: skew(6deg) rotate(2deg) scale(1.05) translate(2px, 2px); }
+        }
         .batarang-img {
             position: absolute;
             top: -50px; 
