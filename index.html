@@ -1145,6 +1145,25 @@
             box-shadow: 0 0 25px #0cf221, 0 0 50px #0cf221;
             transform: scale(1.05);
         }
+
+        /* --- ESTILO PARA LOS LOGOS DE LOS HÉROES --- */
+        .hero-logo {
+            position: absolute;
+            top: -45px;      /* Sobresale hacia arriba del panel */
+            right: 30px;     /* Alineado a la derecha */
+            width: clamp(80px, 10vw, 110px); /* Tamaño adaptable */
+            height: auto;
+            z-index: 100;
+            filter: drop-shadow(4px 4px 0px var(--dark)); /* Sombra de cómic */
+            transform: rotate(10deg); /* Ligera inclinación rebelde */
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .hero-logo:hover {
+            transform: scale(1.15) rotate(0deg);
+            filter: drop-shadow(8px 8px 0px var(--dark));
+        }
         
         @media (max-width: 768px) {
             .panel-header { grid-template-columns: 1fr; justify-items: center; gap: 6px; }
@@ -1189,6 +1208,8 @@
         <div class="slide">
             <!-- Aplicamos clases hulk-bg y hulk-panel -->
             <div class="comic-panel action-panel hulk-bg hulk-panel" style="justify-content: flex-start; align-items: flex-start; padding: 30px; overflow: visible;">
+               
+                <img src="logo_hulk.png" alt="Logo Hulk" class="hero-logo">
                 
                 <div class="narrator-box" style="background-color: #39FF14; color: var(--dark); top: -15px; left: 30px;">Día 1: Exposición a la Radiación...</div>
                 
@@ -1218,6 +1239,8 @@
        <!-- DIAPOSITIVA 3 -->
         <div class="slide">
             <div class="comic-panel action-panel thor-bg thor-panel" style="justify-content: center; align-items: center; padding: 30px; overflow: visible;">
+
+                <img src="logo_thor.png" alt="Logo Thor" class="hero-logo">
                 
                 <!-- El destello del relámpago -->
                 <div class="lightning-overlay"></div>
@@ -1260,7 +1283,7 @@
        <!-- DIAPOSITIVA 4 -->
         <div class="slide">
             <div class="comic-panel action-panel flash-bg flash-panel" style="justify-content: center; align-items: center; padding: 30px; overflow: visible;">
-                
+                <img src="logo_flash.png" alt="Logo Flash" class="hero-logo">                
                 <div class="narrator-box" style="background-color: #FFCC00; color: var(--dark); top: -20px; left: 30px;">¡A la velocidad de la luz!</div>
                 
                 <div class="panel-header z-up" style="width: 100%; max-width: 750px; display: flex; align-items: center; gap: 20px; margin-bottom: 10px; grid-template-columns: auto 1fr;">
@@ -1292,7 +1315,7 @@
        <!-- DIAPOSITIVA 5 -->
         <div class="slide">
             <div class="comic-panel action-panel groot-bg groot-panel" style="justify-content: center; align-items: center; padding: 30px; overflow: visible; transform: skew(-1deg);">
-                
+                <img src="logo_groot.png" alt="Logo Groot" class="hero-logo">                
                 <!-- Caja de narrador color madera -->
                 <div class="narrator-box" style="background-color: #D2B48C; color: #2E1F10; top: -20px; left: 30px; border-color: #2E1F10;">Yo soy Groot... (La Leyenda del Promedio)</div>
                 
@@ -1328,6 +1351,7 @@
        <!-- DIAPOSITIVA 6 -->
         <div class="slide">
             <div class="comic-panel action-panel wolverine-bg wolverine-panel" style="justify-content: center; align-items: center; padding: 30px; overflow: visible;">
+                <img src="logo_wolverine.png" alt="Logo Wolverine" class="hero-logo">
                 
                 <div class="narrator-box" style="background-color: #0033A0; color: #FFCE00; top: -20px; left: 30px; border-color: #111;">Mientras tanto, en la facultad...</div>
                 
@@ -1367,6 +1391,7 @@
        <!-- DIAPOSITIVA 7 -->
         <div class="slide">
             <div class="comic-panel action-panel heroic-bg heroic-panel" style="justify-content: center; align-items: center; padding: 30px; overflow: visible;">
+                <img src="logo_capitan.png" alt="Logo Capitan America" class="hero-logo" style="width: clamp(100px, 12vw, 130px);">
                 
                 <div class="narrator-box" style="background-color: #FFF; color: #001489; top: -20px; left: 30px; border-color: #DA291C;">A Kilómetros de Distancia...</div>
                 
@@ -1403,6 +1428,7 @@
         <!-- DIAPOSITIVA 8 -->
         <div class="slide">
             <div class="comic-panel action-panel f4-bg f4-panel" style="justify-content: center; align-items: center; padding: 30px; overflow: visible;">
+                <img src="logo_4f.png" alt="Logo Los 4 Fantasticos" class="hero-logo">
                 
                 <div class="narrator-box" style="background-color: #FFF; color: #0033A0; top: -20px; left: 30px; border-color: #111;">¡Una Alianza Inesperada!</div>
                 
@@ -1439,6 +1465,7 @@
         <!-- DIAPOSITIVA 9 (S.H.I.E.L.D.) -->
         <div class="slide">
             <div class="comic-panel action-panel shield-bg shield-panel" style="justify-content: center; align-items: center; padding: 30px; overflow: visible;">
+                <img src="logo_shield.png" alt="Logo SHIELD" class="hero-logo">
                 <div class="narrator-box" style="background-color: #000; color: #00E5FF; top: -20px; left: 30px; border-color: #00E5FF; font-family: monospace; letter-spacing: 2px;">ACCEDIENDO AL MAINFRAME...</div>
                 <h2 class="shield-title z-up">LOS PORTALES OFICIALES 💻</h2>
                 <div class="shield-box z-up">
@@ -1457,6 +1484,7 @@
         <!-- DIAPOSITIVA 10 (MAGNETO) -->
         <div class="slide">
             <div class="comic-panel action-panel magneto-bg magneto-panel" style="justify-content: center; align-items: center; padding: 30px; overflow: visible;">
+                <img src="logo_magneto.png" alt="Logo Magneto" class="hero-logo">
                 
                 <div class="narrator-box" style="background-color: #A0AEC0; color: #4A0E4E; top: -20px; left: 30px; border-color: #4A0E4E;">El Lenguaje Secreto...</div>
                 
@@ -1485,6 +1513,7 @@
         <!-- DIAPOSITIVA 11 (LINTERNA VERDE) -->
         <div class="slide">
             <div class="comic-panel action-panel gl-bg gl-panel" style="justify-content: center; align-items: center; padding: 30px; overflow: visible;">
+                <img src="logo_lanterns.png" alt="Logo Linternas Verdes" class="hero-logo">
                 <div class="narrator-box" style="background-color: #050505; color: #0cf221; top: -20px; left: 30px; border-color: #0cf221; box-shadow: 0 0 10px #0cf221;">Preparativos Finales...</div>
                 
                 <h2 class="gl-title z-up">CHECKLIST DE INICIO ✅</h2>
@@ -1505,6 +1534,7 @@
         <!-- DIAPOSITIVA 12 (LINTERNA VERDE) -->
         <div class="slide">
             <div class="comic-panel action-panel gl-bg gl-panel" style="justify-content: center; align-items: center; padding: 30px; overflow: visible;">
+                <img src="logo_lanterns.png" alt="Logo Linternas Verdes" class="hero-logo">
                 <div class="narrator-box" style="background-color: #050505; color: #0cf221; top: -20px; left: 30px; border-color: #0cf221; box-shadow: 0 0 10px #0cf221;">El Camino del Héroe...</div>
                 
                 <h2 class="gl-title z-up">CONCLUSIÓN 🏁</h2>
@@ -1525,6 +1555,7 @@
         <!-- DIAPOSITIVA 13 (LINTERNA VERDE - ENTREGA) -->
         <div class="slide">
             <div class="comic-panel action-panel gl-bg gl-panel" style="justify-content: center; align-items: center; padding: 30px; overflow: visible;">
+                <img src="logo_lanterns.png" alt="Logo Linternas Verdes" class="hero-logo">
                 <div class="narrator-box" style="background-color: #050505; color: #0cf221; top: -20px; left: 30px; border-color: #0cf221; box-shadow: 0 0 10px #0cf221;">Misión Cumplida...</div>
                 
                 <h2 class="gl-title z-up" style="font-size: clamp(3rem, 7vw, 5rem);">¡¡GRACIAS POR VER!! </h2>
