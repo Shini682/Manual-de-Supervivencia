@@ -573,38 +573,41 @@
             animation: mjolnir-smash 5s infinite;
         }
 
-        /* --- ESTILOS ESPECÍFICOS VIÑETA 4 (FLASH) --- */
+/* --- ESTILOS ESPECÍFICOS VIÑETA 4 (FLASH) CORREGIDOS --- */
         .flash-bg {
-            background-color: #D30000; /* Rojo Escarlata */
-            background-image: 
-                /* Líneas horizontales de supervelocidad */
-                repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255, 204, 0, 0.15) 40px, rgba(255, 204, 0, 0.15) 45px),
-                repeating-linear-gradient(0deg, transparent, transparent 10px, rgba(0, 0, 0, 0.1) 10px, rgba(0, 0, 0, 0.1) 12px);
+            background-color: #D30000;
+            background-image: repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255, 204, 0, 0.2) 40px, rgba(255, 204, 0, 0.2) 45px);
+            /* Animación constante del fondo simulando velocidad */
+            animation: speed-force 0.3s linear infinite;
+        }
+
+        @keyframes speed-force {
+            from { background-position: 0 0; }
+            to { background-position: -85px 0; }
         }
 
         .flash-panel {
-            border-color: #FFCC00; /* Amarillo relámpago */
+            border-color: #FFCC00;
             border-width: 8px;
-            box-shadow: 15px 0 0 rgba(0,0,0,0.7); /* Sombra lateral para dar sensación de movimiento */
-            transform: skew(-8deg); /* Inclinación de velocidad extrema */
+            box-shadow: 15px 0 0 rgba(0,0,0,0.7);
+            transform: skew(-8deg);
         }
         
         .flash-panel > * {
-            transform: skew(8deg); /* Enderezamos el contenido */
+            transform: skew(8deg); 
         }
 
         .speed-title {
             color: #FFCC00;
             font-family: 'Bangers', cursive;
             text-transform: uppercase;
-            text-shadow: 4px 0 0 #fff, 6px 0 0 var(--dark); /* Efecto de estela de velocidad */
+            text-shadow: 4px 0 0 #fff, 6px 0 0 var(--dark);
             font-size: clamp(2.5rem, 6vw, 4rem);
             font-style: italic;
             margin-bottom: 15px;
             text-align: center;
         }
 
-        /* Contenedor compacto a toda velocidad */
         .speed-box {
             background-color: #fff;
             border: 5px solid #FFCC00;
@@ -619,11 +622,17 @@
         }
         
         .speed-action {
-            background-color: #D30000 !important; /* Botón Rojo */
+            background-color: #D30000 !important;
             color: #fff !important;
             border-color: var(--dark) !important;
             text-align: center;
             font-style: italic;
+            transition: all 0.2s;
+        }
+        
+        .speed-action:hover {
+            filter: brightness(1.2);
+            transform: translate(-2px, -2px) skew(8deg) !important; /* Mantiene la inclinación */
         }
 
         /* Animación de entrada derrapando */
