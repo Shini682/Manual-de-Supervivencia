@@ -314,14 +314,23 @@
             filter: drop-shadow(10px 10px 0px rgba(0,0,0,1));
             animation: bat-shake 0.2s linear infinite both;
         }
+/* Animación de entrada derrapando (Corregida) */
+        @keyframes speed-zip {
+            0% { transform: translateX(-100%) skew(-20deg); opacity: 0; filter: blur(10px); }
+            70% { transform: translateX(2%) skew(5deg); opacity: 1; filter: blur(0); }
+            /* ¡Le agregamos opacity: 1 al final para que no desaparezca! */
+            100% { transform: translateX(0) skew(0); opacity: 1; filter: blur(0); } 
+        }
 
-        /* Keyframes de la vibración (mantenemos la inclinación base del panel) */
-        @keyframes bat-shake {
-            0% { transform: skew(6deg) rotate(2deg) scale(1.05); }
-            25% { transform: skew(6deg) rotate(-3deg) scale(1.05) translate(-2px, 2px); }
-            50% { transform: skew(6deg) rotate(6deg) scale(1.05) translate(2px, -2px); }
-            75% { transform: skew(6deg) rotate(-3deg) scale(1.05) translate(-2px, -2px); }
-            100% { transform: skew(6deg) rotate(2deg) scale(1.05) translate(2px, 2px); }
+        /* Estado base: oculto y movido a la izquierda */
+        .zip-in {
+            opacity: 0; 
+            transform: translateX(-100%);
+        }
+
+        /* ¡La magia! La animación SOLO arranca cuando cambiamos a esta diapositiva */
+        .slide.active .zip-in {
+            animation: speed-zip 0.5s ease-out forwards;
         }
         .batarang-img {
             position: absolute;
