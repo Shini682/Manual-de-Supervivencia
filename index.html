@@ -1029,6 +1029,23 @@
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-12px); }
         }
+        /* Convertimos la lista de Magneto en dos columnas responsivas */
+        .magneto-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 12px;
+        }
+
+        .magneto-list li {
+            background-color: #FFF !important;
+            border-color: #A0AEC0 !important;
+            border-left: 8px solid #D10020 !important; 
+            color: var(--dark);
+            margin-bottom: 0 !important; /* Quitamos el margen inferior porque el 'gap' ya separa */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
 
         .magneto-list li {
             background-color: #FFF !important;
@@ -1036,6 +1053,7 @@
             border-left: 8px solid #D10020 !important; /* Marca roja gruesa */
             color: var(--dark);
         }
+        
 
         .magneto-list li strong {
             color: #4A0E4E; /* Texto púrpura */
@@ -1445,14 +1463,20 @@
                 <h2 class="magneto-title z-up">GLOSARIO DE SUPERVIVENCIA 📖</h2>
                 
                 <!-- Caja levitando con el poder del magnetismo -->
+                <!-- Caja levitando con el poder del magnetismo -->
                 <div class="magneto-box z-up">
                     <ul class="content-list magneto-list" style="margin-bottom: 0;">
-                        <li><strong>Primíparo:</strong> Estudiante de primer semestre. (¡El eslabón más débil!)</li>
-                        <li><strong>Historia Académica:</strong> Tu expediente de vida en la universidad.</li>
-                        <li><strong>Comité Asesor:</strong> Quienes aprueban tus solicitudes mutantes.</li>
+                        <li><strong>Primíparo:</strong> Estudiante de primer semestre.</li>
+                        <li><strong>Historia Académica:</strong> Tu expediente de vida y batallas en la universidad.</li>
+                        <li><strong>Comité Asesor:</strong> Quienes aprueban tus solicitudes y misiones mutantes.</li>
+                        <li><strong>SIA:</strong> Tu centro de mando. Si el trámite no está en el SIA, no existe.</li>
+                        <li><strong>P.A.P.A.:</strong> Tu promedio acumulado. ¡Mantenlo siempre arriba de 3.0!</li>
+                        <li><strong>PBM:</strong> Puntaje Básico de Matrícula. Define el costo de tu semestre.</li>
+                        <li><strong>Cancelación:</strong> Retirada táctica de una materia para salvar tu promedio.</li>
+                        <li><strong>Reserva de Cupo:</strong> Poder para congelar tu semestre y volver a luchar otro día.</li>
                     </ul>
-                    <div class="action-box magneto-action">
-                        <strong>¡CONSEJO! 💡</strong> Domina estos términos para hablar con propiedad en la facultad.
+                    <div class="action-box magneto-action" style="margin-top: 5px;">
+                        <strong>¡CONSEJO! 💡</strong> Nunca preguntes en el intercampus donde puede dejarte y mucho menos toques el timbre (HABLO ENSERIO)
                     </div>
                 </div>
                 
