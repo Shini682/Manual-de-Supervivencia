@@ -40,7 +40,7 @@
         #slider-container {
             width: 100%;
             max-width: 1000px;
-            height: 94vh; /* Ajustado para que quepa bien en laptops */
+            height: 94vh; 
             position: relative;
             padding: 10px;
         }
@@ -50,7 +50,7 @@
             top: 10px;
             left: 10px;
             width: calc(100% - 20px);
-            height: calc(100% - 100px); /* Deja espacio exacto para los botones abajo */
+            height: calc(100% - 100px); 
             opacity: 0;
             transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             transform: scale(0.95);
@@ -73,9 +73,9 @@
             flex-grow: 1;
             display: flex;
             flex-direction: column;
-            padding: 20px; /* Reducido para ahorrar espacio */
+            padding: 20px; 
             position: relative;
-            overflow-y: auto; /* Agrega scroll si el contenido es muy largo */
+            overflow-y: auto; 
         }
 
         .panel-header {
@@ -111,7 +111,7 @@
             width: 0;
         }
 
-        /* RECORTES DE JAIMIMITO (SPRITE SHEET) */
+        /* CONTENEDOR DE JAIMIMITO LIMPIO */
         .character-crop {
             width: 150px;
             height: 150px;
@@ -119,27 +119,19 @@
             border-radius: 8px;
             box-shadow: 5px 5px 0 var(--dark);
             overflow: hidden;
-            position: relative;
             background-color: #fff;
             flex-shrink: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
+        /* La imagen ocupará el 100% del cuadro sin deformarse */
         .character-crop img {
-            position: absolute;
-            /* Hacemos "zoom" para sacar los bordes grises de la imagen fuera del contenedor */
-            width: 325%;
-            height: 430%;
-            max-width: none;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
         }
-
-        /* Coordenadas calibradas para centrar la cara y ocultar las viñetas vecinas */
-        .face-normal      { top: -2%;    left: -4%; }    /* Fila 1, Columna 1 */
-        .face-confundido  { top: -110%;  left: -112%; }  /* Fila 2, Columna 2 */
-        .face-sorprendido { top: -110%;  left: -4%; }    /* Fila 2, Columna 1 */
-        .face-genio       { top: -325%;  left: -221%; }  /* Fila 4, Columna 3 */
-        .face-furioso     { top: -218%;  left: -4%; }    /* Fila 3, Columna 1 */
-        .face-llorando    { top: -2%;    left: -221%; }  /* Fila 1, Columna 3 */
-        .face-feliz       { top: -2%;    left: -112%; }  /* Fila 1, Columna 2 */
 
         h1, h2 {
             font-family: 'Bangers', cursive;
@@ -195,7 +187,7 @@
             z-index: 10;
         }
 
-        /* CONTROLES FIJOS AL FONDO DEL CONTENEDOR */
+        /* CONTROLES */
         .controls {
             position: absolute;
             bottom: 15px;
@@ -253,7 +245,7 @@
 
     <div id="slider-container">
 
-        <!-- DIAPOSITIVA 1: Portada -->
+        <!-- DIAPOSITIVA 1 -->
         <div class="slide active">
             <div class="comic-panel" style="justify-content: center; text-align: center; background-color: var(--primary);">
                 <div class="burst">¡NUEVO!</div>
@@ -266,19 +258,19 @@
             </div>
         </div>
 
-        <!-- DIAPOSITIVA 2: Introducción -->
+        <!-- DIAPOSITIVA 2 -->
         <div class="slide">
             <div class="comic-panel">
                 <h2>¡ALERTA PRIMÍPARO! 🚨</h2>
                 <p style="font-size: clamp(1.1rem, 2.5vw, 1.3rem); line-height: 1.4; margin-bottom: 15px;">La Universidad Nacional no es solo estudiar, es aprender a sobrevivir a sus trámites. Si no quieres perderte en el laberinto administrativo, este manual es tu mejor arma.</p>
                 <p style="font-size: clamp(1.1rem, 2.5vw, 1.3rem); font-weight: bold;">En las siguientes viñetas aprenderás a dominar 6 procesos vitales. ¡Acompáñame!</p>
                 <div class="character-crop" style="margin: 20px auto; border-radius: 50%;">
-                    <img src="image_d5e8cf.jpg" alt="Jaimimito Normal" class="face-normal">
+                    <img src="jaimimito_normal.png" alt="Jaimimito Normal">
                 </div>
             </div>
         </div>
 
-        <!-- DIAPOSITIVA 3: Doble Titulación -->
+        <!-- DIAPOSITIVA 3 -->
         <div class="slide">
             <div class="comic-panel">
                 <div class="panel-header">
@@ -286,7 +278,7 @@
                         "¡Quiero estudiar dos carreras al tiempo y no morir en el intento! ¿Se puede?"
                     </div>
                     <div class="character-crop">
-                        <img src="image_d5e8cf.jpg" alt="Confundido" class="face-confundido">
+                        <img src="jaimimito_confundido.png" alt="Confundido">
                     </div>
                 </div>
                 <h2>DOBLE TITULACIÓN 🎓🎓</h2>
@@ -300,7 +292,7 @@
             </div>
         </div>
 
-        <!-- DIAPOSITIVA 4: PBM -->
+        <!-- DIAPOSITIVA 4 -->
         <div class="slide">
             <div class="comic-panel">
                 <div class="panel-header">
@@ -308,7 +300,7 @@
                         "¿Qué es este misterioso número llamado PBM y por qué define mi matrícula?"
                     </div>
                     <div class="character-crop" style="background-color: var(--secondary);">
-                        <img src="image_d5e8cf.jpg" alt="Sorprendido" class="face-sorprendido">
+                        <img src="jaimimito_sorprendido.png" alt="Sorprendido">
                     </div>
                 </div>
                 <h2>ENTENDIENDO EL PBM 💰</h2>
@@ -322,7 +314,7 @@
             </div>
         </div>
 
-        <!-- DIAPOSITIVA 5: P.A.P.A -->
+        <!-- DIAPOSITIVA 5 -->
         <div class="slide">
             <div class="comic-panel">
                 <div class="panel-header">
@@ -330,7 +322,7 @@
                         "Todos hablan de cuidar el 'P.A.P.A', pero... ¿cómo domo a esta bestia matemática?"
                     </div>
                     <div class="character-crop">
-                        <img src="image_d5e8cf.jpg" alt="Genio" class="face-genio">
+                        <img src="jaimimito_genio.png" alt="Genio">
                     </div>
                 </div>
                 <h2>EL SAGRADO P.A.P.A 📊</h2>
@@ -344,7 +336,7 @@
             </div>
         </div>
 
-        <!-- DIAPOSITIVA 6: Segundo Evaluador -->
+        <!-- DIAPOSITIVA 6 -->
         <div class="slide">
             <div class="comic-panel">
                 <div class="panel-header">
@@ -352,7 +344,7 @@
                         "¡Injusticia! Mi examen fue mal calificado. ¡Exijo un juicio por combate!"
                     </div>
                     <div class="character-crop" style="background-color: var(--danger);">
-                        <img src="image_d5e8cf.jpg" alt="Furioso" class="face-furioso">
+                        <img src="jaimimito_furioso.png" alt="Furioso">
                     </div>
                 </div>
                 <h2>SEGUNDO EVALUADOR 😡</h2>
@@ -366,7 +358,7 @@
             </div>
         </div>
 
-        <!-- DIAPOSITIVA 7: Cambio de Sede -->
+        <!-- DIAPOSITIVA 7 -->
         <div class="slide">
             <div class="comic-panel">
                 <div class="panel-header">
@@ -374,7 +366,7 @@
                         "El destino me llama a Bogotá o Medellín. ¿Me puedo mudar?"
                     </div>
                     <div class="character-crop" style="background-color: var(--success);">
-                        <img src="image_d5e8cf.jpg" alt="Llorando de felicidad" class="face-llorando">
+                        <img src="jaimimito_llorando.png" alt="Llorando de felicidad">
                     </div>
                 </div>
                 <h2>CAMBIO DE SEDE ✈️</h2>
@@ -388,7 +380,7 @@
             </div>
         </div>
 
-        <!-- DIAPOSITIVA 8: Convenio SUMA -->
+        <!-- DIAPOSITIVA 8 -->
         <div class="slide">
             <div class="comic-panel">
                 <div class="panel-header">
@@ -396,7 +388,7 @@
                         "Necesito ver una materia urgente, pero en la Nacho no abrieron cupos. ¡Auxilio!"
                     </div>
                     <div class="character-crop" style="background-color: #ff9900;">
-                        <img src="image_d5e8cf.jpg" alt="Feliz" class="face-feliz">
+                        <img src="jaimimito_feliz.png" alt="Feliz">
                     </div>
                 </div>
                 <h2>CONVENIO SUMA 🤝</h2>
@@ -409,7 +401,7 @@
             </div>
         </div>
 
-        <!-- DIAPOSITIVAS RESTANTES 9 a 13 -->
+        <!-- DIAPOSITIVAS 9 a 13 -->
         <div class="slide"><div class="comic-panel"><h2>LOS PORTALES OFICIALES 💻</h2><ul class="content-list"><li><strong>SIA:</strong> Sistema de Información Académica.</li><li><strong>GEA:</strong> Gestión Estudiantil.</li><li><strong>DAMA:</strong> Dirección Académica.</li></ul></div></div>
         <div class="slide"><div class="comic-panel"><h2>GLOSARIO DE SUPERVIVENCIA 📖</h2><ul class="content-list"><li><strong>Primíparo:</strong> Estudiante de primer semestre.</li><li><strong>Historia Académica:</strong> Tu expediente de vida.</li><li><strong>Comité Asesor:</strong> Quienes aprueban tus locuras.</li></ul></div></div>
         <div class="slide"><div class="comic-panel"><h2>CHECKLIST DE INICIO ✅</h2><ul class="content-list"><li>[ ] Conozco mi PBM y pagué matrícula.</li><li>[ ] Sé ingresar al SIA.</li><li>[ ] Ubiqué mi salón (para no perderme).</li></ul></div></div>
