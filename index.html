@@ -13,7 +13,6 @@
             --danger: #FF3366;
             --success: #00FF66;
             --dark: #111111;
-            --page-bg: #d1d5db; 
             --panel-bg: #f4f4f5; 
         }
 
@@ -25,9 +24,11 @@
 
         body {
             font-family: 'Comic Neue', cursive;
-            background-color: var(--page-bg);
-            background-image: radial-gradient(#9ca3af 2px, transparent 2px);
-            background-size: 20px 20px;
+            /* Fondo Marvel integrado con un degradado oscuro para no opacar el contenido */
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('Wallpaper.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             height: 100vh;
             display: flex;
             justify-content: center;
@@ -36,21 +37,20 @@
             color: var(--dark);
         }
 
-        /* MOTOR DE PRESENTACIÓN */
         #slider-container {
             width: 100%;
             max-width: 1000px;
-            height: 94vh; 
+            height: 96vh; 
             position: relative;
-            padding: 20px 10px 10px 10px; /* Margen extra arriba para el narrador */
+            padding: 25px 10px 10px 10px;
         }
 
         .slide {
             position: absolute;
-            top: 20px;
+            top: 25px;
             left: 10px;
             width: calc(100% - 20px);
-            height: calc(100% - 100px); 
+            height: calc(100% - 85px); 
             opacity: 0;
             transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             transform: scale(0.95);
@@ -68,25 +68,24 @@
         .comic-panel {
             background-color: var(--panel-bg);
             border: 6px solid var(--dark);
-            box-shadow: 10px 10px 0 var(--dark);
+            box-shadow: 10px 10px 0 rgba(0,0,0,0.8);
             flex-grow: 1;
             display: flex;
             flex-direction: column;
-            padding: 25px; 
+            padding: 15px 25px; /* Padding reducido para compactar */
             position: relative;
             overflow-y: auto; 
         }
 
-        /* --- ESTILOS MARVEL --- */
         .narrator-box {
             background-color: #FFD700;
             color: #111;
             border: 4px solid #111;
-            padding: 8px 15px;
+            padding: 6px 12px;
             font-family: 'Bangers', cursive;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             position: absolute;
-            top: -20px;
+            top: -18px;
             left: 20px;
             box-shadow: 4px 4px 0 #111;
             z-index: 20;
@@ -114,26 +113,24 @@
             pointer-events: none;
         }
 
-        /* --- FIN ESTILOS MARVEL --- */
-
         .panel-header {
             display: grid;
-            grid-template-columns: 1fr 150px;
+            grid-template-columns: 1fr 120px; /* Personaje más compacto */
             gap: 15px;
-            margin-bottom: 15px;
+            margin-bottom: 5px; /* Margen reducido */
             align-items: center;
         }
 
         .speech-bubble {
             background: #fff;
             border: 4px solid var(--dark);
-            border-radius: 15px;
-            padding: 15px;
-            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            border-radius: 12px;
+            padding: 10px 15px; /* Padding reducido */
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
             font-style: italic;
             font-weight: bold;
             position: relative;
-            box-shadow: 5px 5px 0 var(--dark);
+            box-shadow: 4px 4px 0 var(--dark);
         }
 
         .speech-bubble::after {
@@ -150,11 +147,11 @@
         }
 
         .character-crop {
-            width: 150px;
-            height: 150px;
+            width: 120px; /* Tamaño reducido para ahorrar espacio */
+            height: 120px;
             border: 4px solid var(--dark);
             border-radius: 8px;
-            box-shadow: 5px 5px 0 var(--dark);
+            box-shadow: 4px 4px 0 var(--dark);
             overflow: hidden;
             background-color: #fff;
             flex-shrink: 0;
@@ -176,22 +173,22 @@
         }
 
         h2 {
-            font-size: clamp(2rem, 5vw, 3rem);
-            margin-bottom: 10px;
+            font-size: clamp(1.8rem, 4vw, 2.5rem); /* Fuente ligeramente más compacta */
+            margin-bottom: 5px;
             text-shadow: 2px 2px 0 var(--primary);
         }
 
         .content-list {
             list-style: none;
-            font-size: clamp(1rem, 2vw, 1.1rem);
-            margin-bottom: 15px;
+            font-size: clamp(0.9rem, 1.8vw, 1rem);
+            margin-bottom: 10px;
         }
 
         .content-list li {
             background: #fff;
             border: 3px solid var(--dark);
-            padding: 12px;
-            margin-bottom: 8px;
+            padding: 8px 12px; /* Padding reducido */
+            margin-bottom: 6px;
             border-radius: 4px;
             box-shadow: 3px 3px 0 rgba(0,0,0,0.1);
         }
@@ -199,11 +196,11 @@
         .action-box {
             background-color: var(--secondary);
             border: 4px solid var(--dark);
-            padding: 15px;
+            padding: 10px 15px; /* Padding reducido */
             font-weight: bold;
-            font-size: clamp(1rem, 2vw, 1.1rem);
+            font-size: clamp(0.9rem, 1.8vw, 1rem);
             border-radius: 4px;
-            box-shadow: 5px 5px 0 var(--dark);
+            box-shadow: 4px 4px 0 var(--dark);
             margin-top: auto;
             transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
             cursor: pointer;
@@ -212,8 +209,8 @@
         }
         
         .action-box:hover {
-            transform: translate(-4px, -4px);
-            box-shadow: 9px 9px 0 var(--dark);
+            transform: translate(-3px, -3px);
+            box-shadow: 7px 7px 0 var(--dark);
             background-color: #FFD700; 
         }
 
@@ -224,8 +221,8 @@
             background: var(--danger);
             color: #fff;
             font-family: 'Bangers', cursive;
-            font-size: 1.5rem;
-            padding: 10px;
+            font-size: 1.3rem;
+            padding: 8px;
             transform: rotate(15deg);
             border: 3px solid var(--dark);
             box-shadow: 3px 3px 0 var(--dark);
@@ -233,22 +230,22 @@
             z-index: 30;
         }
 
-        /* CONTROLES */
         .controls {
             position: absolute;
-            bottom: 15px;
+            bottom: 5px;
             left: 0;
             width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 15px;
+            z-index: 50;
         }
 
         button {
             font-family: 'Bangers', cursive;
             font-size: 1.2rem;
-            padding: 8px 20px;
+            padding: 6px 15px;
             background-color: #fff;
             border: 4px solid var(--dark);
             border-radius: 8px;
@@ -266,36 +263,35 @@
             font-family: 'Bangers', cursive;
             font-size: 1.5rem;
             background: var(--primary);
-            padding: 5px 15px;
+            padding: 4px 12px;
             border: 4px solid var(--dark);
             box-shadow: 4px 4px 0 var(--dark);
         }
 
-        /* Utilidad para subir el texto sobre las líneas de velocidad */
         .z-up { position: relative; z-index: 1; }
 
         @media (max-width: 768px) {
-            .panel-header { grid-template-columns: 1fr; justify-items: center; }
+            .panel-header { grid-template-columns: 1fr; justify-items: center; gap: 10px; }
             .speech-bubble::after {
-                right: 50%; top: auto; bottom: -15px; transform: translateX(50%);
-                border-width: 15px 15px 0 15px; border-color: var(--dark) transparent transparent transparent;
+                right: 50%; top: auto; bottom: -12px; transform: translateX(50%);
+                border-width: 12px 12px 0 12px; border-color: var(--dark) transparent transparent transparent;
             }
+            .character-crop { width: 100px; height: 100px; }
         }
     </style>
 </head>
 <body>
 
     <div id="slider-container">
-
         <!-- DIAPOSITIVA 1 -->
         <div class="slide active">
             <div class="comic-panel action-panel" style="justify-content: center; text-align: center; background-color: var(--primary);">
                 <div class="speed-lines-bg"></div>
                 <div class="narrator-box" style="background-color: #fff;">¡EL ORIGEN!</div>
                 <div class="burst">¡NUEVO!</div>
-                <h1 class="z-up" style="font-size: clamp(3rem, 8vw, 4.5rem); text-shadow: 4px 4px 0 #fff; margin-bottom: 20px;">MANUAL DE SUPERVIVENCIA UNAL</h1>
-                <h2 class="z-up" style="font-size: clamp(1.5rem, 4vw, 2rem); color: #fff; text-shadow: 2px 2px 0 var(--dark);">"Lo que debes saber en la universidad"</h2>
-                <div class="z-up" style="margin-top: 30px; background: #fff; padding: 15px; border: 4px solid var(--dark); display: inline-block;">
+                <h1 class="z-up" style="font-size: clamp(2.5rem, 8vw, 4rem); text-shadow: 4px 4px 0 #fff; margin-bottom: 20px;">MANUAL DE SUPERVIVENCIA UNAL</h1>
+                <h2 class="z-up" style="font-size: clamp(1.3rem, 4vw, 1.8rem); color: #fff; text-shadow: 2px 2px 0 var(--dark);">"Lo que debes saber en la universidad"</h2>
+                <div class="z-up" style="margin-top: 20px; background: #fff; padding: 15px; border: 4px solid var(--dark); display: inline-block;">
                     <strong>Edición Desclasificada</strong><br>
                     Cátedra Nacional de Inducción
                 </div>
@@ -308,9 +304,9 @@
                 <div class="speed-lines-bg"></div>
                 <div class="narrator-box">Día 1 en el Campus...</div>
                 <h2 class="z-up">¡ALERTA PRIMÍPARO! 🚨</h2>
-                <p class="z-up" style="font-size: clamp(1.1rem, 2.5vw, 1.3rem); line-height: 1.4; margin-bottom: 15px;">La Universidad Nacional no es solo estudiar, es aprender a sobrevivir a sus trámites. Si no quieres perderte en el laberinto administrativo, este manual es tu mejor arma.</p>
-                <p class="z-up" style="font-size: clamp(1.1rem, 2.5vw, 1.3rem); font-weight: bold;">En las siguientes viñetas aprenderás a dominar 6 procesos vitales. ¡Acompáñame!</p>
-                <div class="character-crop z-up" style="margin: 20px auto; border-radius: 50%;">
+                <p class="z-up" style="font-size: clamp(1rem, 2.5vw, 1.2rem); line-height: 1.4; margin-bottom: 10px;">La Universidad Nacional no es solo estudiar, es aprender a sobrevivir a sus trámites. Si no quieres perderte en el laberinto administrativo, este manual es tu mejor arma.</p>
+                <p class="z-up" style="font-size: clamp(1rem, 2.5vw, 1.2rem); font-weight: bold;">En las siguientes viñetas aprenderás a dominar 6 procesos vitales. ¡Acompáñame!</p>
+                <div class="character-crop z-up" style="margin: 10px auto; border-radius: 50%;">
                     <img src="jaimimito_normal.png" alt="Jaimimito Normal">
                 </div>
             </div>
@@ -427,7 +423,7 @@
                 </div>
                 <h2 class="z-up">CONVENIO SUMA 🤝</h2>
                 <ul class="content-list z-up">
-                    <li><strong>El Superpoder de Manizales:</strong> Alianza para cursar materias en otras Ues de la ciudad (Caldas, Católica, etc.) ¡Sin pagar extra!</li>
+                    <li><strong>El Superpoder de Manizales:</strong> Alianza para cursar materias en otras Ues de la ciudad. ¡Sin pagar extra!</li>
                 </ul>
                 <div class="action-box z-up">
                     <strong>¿A DÓNDE VOY? 🖱️</strong> Envía solicitud vía GEA al Comité Asesor para asegurar que te la puedan homologar.
@@ -439,10 +435,9 @@
         <div class="slide"><div class="comic-panel action-panel"><div class="speed-lines-bg"></div><div class="narrator-box">La Red de Información...</div><h2 class="z-up">LOS PORTALES OFICIALES 💻</h2><ul class="content-list z-up"><li><strong>SIA:</strong> Sistema de Información Académica.</li><li><strong>GEA:</strong> Gestión Estudiantil.</li><li><strong>DAMA:</strong> Dirección Académica.</li></ul></div></div>
         <div class="slide"><div class="comic-panel action-panel"><div class="speed-lines-bg"></div><div class="narrator-box">El Lenguaje Secreto...</div><h2 class="z-up">GLOSARIO DE SUPERVIVENCIA 📖</h2><ul class="content-list z-up"><li><strong>Primíparo:</strong> Estudiante de primer semestre.</li><li><strong>Historia Académica:</strong> Tu expediente de vida.</li><li><strong>Comité Asesor:</strong> Quienes aprueban tus locuras.</li></ul></div></div>
         <div class="slide"><div class="comic-panel action-panel"><div class="speed-lines-bg"></div><div class="narrator-box">Preparativos Finales...</div><h2 class="z-up">CHECKLIST DE INICIO ✅</h2><ul class="content-list z-up"><li>[ ] Conozco mi PBM y pagué matrícula.</li><li>[ ] Sé ingresar al SIA.</li><li>[ ] Ubiqué mi salón (para no perderme).</li></ul></div></div>
-        <div class="slide"><div class="comic-panel action-panel"><div class="speed-lines-bg"></div><div class="narrator-box">El Camino del Héroe...</div><div class="burst" style="background: var(--success); right: auto; left: -10px; top: 10px;">¡FIN!</div><h2 class="z-up">CONCLUSIÓN 🏁</h2><p class="z-up" style="font-size: clamp(1.2rem, 3vw, 1.5rem); margin-top: 20px;">Sobrevivir a la UNAL no requiere magia, solo leer el calendario y conocer tus portales. ¡El SIA es tu mejor amigo!</p></div></div>
-        <div class="slide"><div class="comic-panel action-panel" style="text-align: center; justify-content: center;"><div class="speed-lines-bg"></div><div class="narrator-box">Misión Cumplida...</div><h2 class="z-up">ENTREGABLE COMPLETADO 🎯</h2><p class="z-up" style="font-size: clamp(1.2rem, 3vw, 1.5rem);"><strong>Cátedra Nacional de Inducción</strong><br>Universidad Nacional de Colombia<br>Sede Manizales</p></div></div>
+        <div class="slide"><div class="comic-panel action-panel"><div class="speed-lines-bg"></div><div class="narrator-box">El Camino del Héroe...</div><div class="burst" style="background: var(--success); right: auto; left: -10px; top: 10px;">¡FIN!</div><h2 class="z-up">CONCLUSIÓN 🏁</h2><p class="z-up" style="font-size: clamp(1.1rem, 3vw, 1.3rem); margin-top: 15px;">Sobrevivir a la UNAL no requiere magia, solo leer el calendario y conocer tus portales. ¡El SIA es tu mejor amigo!</p></div></div>
+        <div class="slide"><div class="comic-panel action-panel" style="text-align: center; justify-content: center;"><div class="speed-lines-bg"></div><div class="narrator-box">Misión Cumplida...</div><h2 class="z-up">ENTREGABLE COMPLETADO 🎯</h2><p class="z-up" style="font-size: clamp(1.1rem, 3vw, 1.3rem);"><strong>Cátedra Nacional de Inducción</strong><br>Universidad Nacional de Colombia<br>Sede Manizales</p></div></div>
 
-        <!-- CONTROLES -->
         <div class="controls">
             <button id="btn-prev">⬅ ANTERIOR</button>
             <div class="counter"><span id="current-slide">1</span> / 13</div>
