@@ -36,18 +36,18 @@
             color: var(--dark);
         }
 
-        /* MOTOR DE PRESENTACIÓN MEJORADO */
+        /* MOTOR DE PRESENTACIÓN */
         #slider-container {
             width: 100%;
             max-width: 1000px;
             height: 94vh; 
             position: relative;
-            padding: 10px;
+            padding: 20px 10px 10px 10px; /* Margen extra arriba para el narrador */
         }
 
         .slide {
             position: absolute;
-            top: 10px;
+            top: 20px;
             left: 10px;
             width: calc(100% - 20px);
             height: calc(100% - 100px); 
@@ -68,15 +68,53 @@
         .comic-panel {
             background-color: var(--panel-bg);
             border: 6px solid var(--dark);
-            border-radius: 4px;
             box-shadow: 10px 10px 0 var(--dark);
             flex-grow: 1;
             display: flex;
             flex-direction: column;
-            padding: 20px; 
+            padding: 25px; 
             position: relative;
             overflow-y: auto; 
         }
+
+        /* --- ESTILOS MARVEL --- */
+        .narrator-box {
+            background-color: #FFD700;
+            color: #111;
+            border: 4px solid #111;
+            padding: 8px 15px;
+            font-family: 'Bangers', cursive;
+            font-size: 1.2rem;
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            box-shadow: 4px 4px 0 #111;
+            z-index: 20;
+            text-transform: uppercase;
+            transform: rotate(-2deg);
+        }
+
+        .comic-panel.action-panel {
+            transform: skew(-2deg);
+            border-radius: 0; 
+        }
+        .comic-panel.action-panel > * {
+            transform: skew(2deg); 
+        }
+
+        .speed-lines-bg {
+            background: repeating-conic-gradient(
+                from 0deg,
+                transparent 0deg 15deg,
+                rgba(0, 0, 0, 0.05) 15deg 30deg
+            );
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* --- FIN ESTILOS MARVEL --- */
 
         .panel-header {
             display: grid;
@@ -111,7 +149,6 @@
             width: 0;
         }
 
-        /* CONTENEDOR DE JAIMIMITO LIMPIO */
         .character-crop {
             width: 150px;
             height: 150px;
@@ -126,7 +163,6 @@
             align-items: center;
         }
 
-        /* La imagen ocupará el 100% del cuadro sin deformarse */
         .character-crop img {
             width: 100%;
             height: 100%;
@@ -169,6 +205,16 @@
             border-radius: 4px;
             box-shadow: 5px 5px 0 var(--dark);
             margin-top: auto;
+            transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+            cursor: pointer;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .action-box:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 9px 9px 0 var(--dark);
+            background-color: #FFD700; 
         }
 
         .burst {
@@ -184,7 +230,7 @@
             border: 3px solid var(--dark);
             box-shadow: 3px 3px 0 var(--dark);
             clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-            z-index: 10;
+            z-index: 30;
         }
 
         /* CONTROLES */
@@ -225,18 +271,14 @@
             box-shadow: 4px 4px 0 var(--dark);
         }
 
+        /* Utilidad para subir el texto sobre las líneas de velocidad */
+        .z-up { position: relative; z-index: 1; }
+
         @media (max-width: 768px) {
-            .panel-header {
-                grid-template-columns: 1fr;
-                justify-items: center;
-            }
+            .panel-header { grid-template-columns: 1fr; justify-items: center; }
             .speech-bubble::after {
-                right: 50%;
-                top: auto;
-                bottom: -15px;
-                transform: translateX(50%);
-                border-width: 15px 15px 0 15px;
-                border-color: var(--dark) transparent transparent transparent;
+                right: 50%; top: auto; bottom: -15px; transform: translateX(50%);
+                border-width: 15px 15px 0 15px; border-color: var(--dark) transparent transparent transparent;
             }
         }
     </style>
@@ -247,11 +289,13 @@
 
         <!-- DIAPOSITIVA 1 -->
         <div class="slide active">
-            <div class="comic-panel" style="justify-content: center; text-align: center; background-color: var(--primary);">
+            <div class="comic-panel action-panel" style="justify-content: center; text-align: center; background-color: var(--primary);">
+                <div class="speed-lines-bg"></div>
+                <div class="narrator-box" style="background-color: #fff;">¡EL ORIGEN!</div>
                 <div class="burst">¡NUEVO!</div>
-                <h1 style="font-size: clamp(3rem, 8vw, 4.5rem); text-shadow: 4px 4px 0 #fff; margin-bottom: 20px;">MANUAL DE SUPERVIVENCIA UNAL</h1>
-                <h2 style="font-size: clamp(1.5rem, 4vw, 2rem); color: #fff; text-shadow: 2px 2px 0 var(--dark);">"Lo que debes saber en la universidad"</h2>
-                <div style="margin-top: 30px; background: #fff; padding: 15px; border: 4px solid var(--dark); display: inline-block;">
+                <h1 class="z-up" style="font-size: clamp(3rem, 8vw, 4.5rem); text-shadow: 4px 4px 0 #fff; margin-bottom: 20px;">MANUAL DE SUPERVIVENCIA UNAL</h1>
+                <h2 class="z-up" style="font-size: clamp(1.5rem, 4vw, 2rem); color: #fff; text-shadow: 2px 2px 0 var(--dark);">"Lo que debes saber en la universidad"</h2>
+                <div class="z-up" style="margin-top: 30px; background: #fff; padding: 15px; border: 4px solid var(--dark); display: inline-block;">
                     <strong>Edición Desclasificada</strong><br>
                     Cátedra Nacional de Inducción
                 </div>
@@ -260,11 +304,13 @@
 
         <!-- DIAPOSITIVA 2 -->
         <div class="slide">
-            <div class="comic-panel">
-                <h2>¡ALERTA PRIMÍPARO! 🚨</h2>
-                <p style="font-size: clamp(1.1rem, 2.5vw, 1.3rem); line-height: 1.4; margin-bottom: 15px;">La Universidad Nacional no es solo estudiar, es aprender a sobrevivir a sus trámites. Si no quieres perderte en el laberinto administrativo, este manual es tu mejor arma.</p>
-                <p style="font-size: clamp(1.1rem, 2.5vw, 1.3rem); font-weight: bold;">En las siguientes viñetas aprenderás a dominar 6 procesos vitales. ¡Acompáñame!</p>
-                <div class="character-crop" style="margin: 20px auto; border-radius: 50%;">
+            <div class="comic-panel action-panel">
+                <div class="speed-lines-bg"></div>
+                <div class="narrator-box">Día 1 en el Campus...</div>
+                <h2 class="z-up">¡ALERTA PRIMÍPARO! 🚨</h2>
+                <p class="z-up" style="font-size: clamp(1.1rem, 2.5vw, 1.3rem); line-height: 1.4; margin-bottom: 15px;">La Universidad Nacional no es solo estudiar, es aprender a sobrevivir a sus trámites. Si no quieres perderte en el laberinto administrativo, este manual es tu mejor arma.</p>
+                <p class="z-up" style="font-size: clamp(1.1rem, 2.5vw, 1.3rem); font-weight: bold;">En las siguientes viñetas aprenderás a dominar 6 procesos vitales. ¡Acompáñame!</p>
+                <div class="character-crop z-up" style="margin: 20px auto; border-radius: 50%;">
                     <img src="jaimimito_normal.png" alt="Jaimimito Normal">
                 </div>
             </div>
@@ -272,21 +318,19 @@
 
         <!-- DIAPOSITIVA 3 -->
         <div class="slide">
-            <div class="comic-panel">
-                <div class="panel-header">
-                    <div class="speech-bubble">
-                        "¡Quiero estudiar dos carreras al tiempo y no morir en el intento! ¿Se puede?"
-                    </div>
-                    <div class="character-crop">
-                        <img src="jaimimito_confundido.png" alt="Confundido">
-                    </div>
+            <div class="comic-panel action-panel">
+                <div class="speed-lines-bg"></div>
+                <div class="narrator-box">Una Decisión Crucial...</div>
+                <div class="panel-header z-up">
+                    <div class="speech-bubble">"¡Quiero estudiar dos carreras al tiempo y no morir en el intento! ¿Se puede?"</div>
+                    <div class="character-crop"><img src="jaimimito_confundido.png" alt="Confundido"></div>
                 </div>
-                <h2>DOBLE TITULACIÓN 🎓🎓</h2>
-                <ul class="content-list">
+                <h2 class="z-up">DOBLE TITULACIÓN 🎓🎓</h2>
+                <ul class="content-list z-up">
                     <li><strong>La Regla de Oro:</strong> Estar matriculado, no estar graduado y revisar las fechas del calendario.</li>
                     <li><strong>El Reto:</strong> Necesitas disponer de cupo de créditos. ¡Solo te salvas si tu P.A.P.A es mayor o igual a 4.3!</li>
                 </ul>
-                <div class="action-box">
+                <div class="action-box z-up">
                     <strong>¿A DÓNDE VOY? 🖱️</strong> Ingresa al SIA > Trámites y Solicitudes > Mis Solicitudes > Doble titulación.
                 </div>
             </div>
@@ -294,43 +338,39 @@
 
         <!-- DIAPOSITIVA 4 -->
         <div class="slide">
-            <div class="comic-panel">
-                <div class="panel-header">
-                    <div class="speech-bubble">
-                        "¿Qué es este misterioso número llamado PBM y por qué define mi matrícula?"
-                    </div>
-                    <div class="character-crop" style="background-color: var(--secondary);">
-                        <img src="jaimimito_sorprendido.png" alt="Sorprendido">
-                    </div>
+            <div class="comic-panel action-panel">
+                <div class="speed-lines-bg"></div>
+                <div class="narrator-box">El Misterio del Dinero...</div>
+                <div class="panel-header z-up">
+                    <div class="speech-bubble">"¿Qué es este misterioso número llamado PBM y por qué define mi matrícula?"</div>
+                    <div class="character-crop" style="background-color: var(--secondary);"><img src="jaimimito_sorprendido.png" alt="Sorprendido"></div>
                 </div>
-                <h2>ENTENDIENDO EL PBM 💰</h2>
-                <ul class="content-list">
+                <h2 class="z-up">ENTENDIENDO EL PBM 💰</h2>
+                <ul class="content-list z-up">
                     <li><strong>Puntaje Básico de Matrícula (0-100):</strong> PBM bajo = matrícula económica. ¡NO es el puntaje de admisión!</li>
                     <li><strong>El Cálculo:</strong> Depende de ingresos familiares, colegio, estrato y personas a cargo.</li>
                 </ul>
-                <div class="action-box">
-                    <strong>¿A DÓNDE VOY? 🖱️</strong> Revisa recibos en el SIA. Si tu economía cambia, radica solicitud por el GEA (cae.manizales.unal.edu.co).
+                <div class="action-box z-up">
+                    <strong>¿A DÓNDE VOY? 🖱️</strong> Revisa recibos en el SIA. Si tu economía cambia, radica solicitud por el GEA.
                 </div>
             </div>
         </div>
 
         <!-- DIAPOSITIVA 5 -->
         <div class="slide">
-            <div class="comic-panel">
-                <div class="panel-header">
-                    <div class="speech-bubble">
-                        "Todos hablan de cuidar el 'P.A.P.A', pero... ¿cómo domo a esta bestia matemática?"
-                    </div>
-                    <div class="character-crop">
-                        <img src="jaimimito_genio.png" alt="Genio">
-                    </div>
+            <div class="comic-panel action-panel">
+                <div class="speed-lines-bg"></div>
+                <div class="narrator-box">La Leyenda del Promedio...</div>
+                <div class="panel-header z-up">
+                    <div class="speech-bubble">"Todos hablan de cuidar el 'P.A.P.A', pero... ¿cómo domo a esta bestia matemática?"</div>
+                    <div class="character-crop"><img src="jaimimito_genio.png" alt="Genio"></div>
                 </div>
-                <h2>EL SAGRADO P.A.P.A 📊</h2>
-                <ul class="content-list">
+                <h2 class="z-up">EL SAGRADO P.A.P.A 📊</h2>
+                <ul class="content-list z-up">
                     <li><strong>Promedio Académico Ponderado Acumulado:</strong> (Nota definitiva x Créditos) / Total de créditos.</li>
                     <li><strong>¿Para qué sirve?</strong> Define tu orden de inscripción, traslados y becas.</li>
                 </ul>
-                <div class="action-box">
+                <div class="action-box z-up">
                     <strong>¿A DÓNDE VOY? 🖱️</strong> ¡No saques la calculadora! Entra al SIA > Historia Académica.
                 </div>
             </div>
@@ -338,21 +378,19 @@
 
         <!-- DIAPOSITIVA 6 -->
         <div class="slide">
-            <div class="comic-panel">
-                <div class="panel-header">
-                    <div class="speech-bubble">
-                        "¡Injusticia! Mi examen fue mal calificado. ¡Exijo un juicio por combate!"
-                    </div>
-                    <div class="character-crop" style="background-color: var(--danger);">
-                        <img src="jaimimito_furioso.png" alt="Furioso">
-                    </div>
+            <div class="comic-panel action-panel">
+                <div class="speed-lines-bg"></div>
+                <div class="narrator-box">Mientras tanto, en la facultad...</div>
+                <div class="panel-header z-up">
+                    <div class="speech-bubble">"¡Injusticia! Mi examen fue mal calificado. ¡Exijo un juicio por combate!"</div>
+                    <div class="character-crop" style="background-color: var(--danger);"><img src="jaimimito_furioso.png" alt="Furioso"></div>
                 </div>
-                <h2>SEGUNDO EVALUADOR 😡</h2>
-                <ul class="content-list">
+                <h2 class="z-up">SEGUNDO EVALUADOR 😡</h2>
+                <ul class="content-list z-up">
                     <li><strong>Tiempo límite:</strong> Tienes MÁXIMO 3 días hábiles tras la publicación de la nota.</li>
                     <li><strong>Advertencia Peligrosa:</strong> La nota del nuevo evaluador será la definitiva... ¡Incluso si es más baja!</li>
                 </ul>
-                <div class="action-box">
+                <div class="action-box z-up">
                     <strong>¿A DÓNDE VOY? 🖱️</strong> Radica la solicitud al Comité Asesor de tu programa a través del sistema GEA.
                 </div>
             </div>
@@ -360,21 +398,19 @@
 
         <!-- DIAPOSITIVA 7 -->
         <div class="slide">
-            <div class="comic-panel">
-                <div class="panel-header">
-                    <div class="speech-bubble">
-                        "El destino me llama a Bogotá o Medellín. ¿Me puedo mudar?"
-                    </div>
-                    <div class="character-crop" style="background-color: var(--success);">
-                        <img src="jaimimito_llorando.png" alt="Llorando de felicidad">
-                    </div>
+            <div class="comic-panel action-panel">
+                <div class="speed-lines-bg"></div>
+                <div class="narrator-box">A Kilómetros de Distancia...</div>
+                <div class="panel-header z-up">
+                    <div class="speech-bubble">"El destino me llama a Bogotá o Medellín. ¿Me puedo mudar?"</div>
+                    <div class="character-crop" style="background-color: var(--success);"><img src="jaimimito_llorando.png" alt="Llorando de felicidad"></div>
                 </div>
-                <h2>CAMBIO DE SEDE ✈️</h2>
-                <ul class="content-list">
+                <h2 class="z-up">CAMBIO DE SEDE ✈️</h2>
+                <ul class="content-list z-up">
                     <li><strong>Requisito Vital:</strong> ¡La sede destino debe tener cupos disponibles!</li>
                     <li><strong>Tus stats:</strong> Necesitas un P.A.P.A competitivo y NO haber terminado el plan de estudios actual.</li>
                 </ul>
-                <div class="action-box">
+                <div class="action-box z-up">
                     <strong>¿A DÓNDE VOY? 🖱️</strong> Revisa plazos en el portal DAMA y luego haz la solicitud oficial en el SIA.
                 </div>
             </div>
@@ -382,31 +418,29 @@
 
         <!-- DIAPOSITIVA 8 -->
         <div class="slide">
-            <div class="comic-panel">
-                <div class="panel-header">
-                    <div class="speech-bubble">
-                        "Necesito ver una materia urgente, pero en la Nacho no abrieron cupos. ¡Auxilio!"
-                    </div>
-                    <div class="character-crop" style="background-color: #ff9900;">
-                        <img src="jaimimito_feliz.png" alt="Feliz">
-                    </div>
+            <div class="comic-panel action-panel">
+                <div class="speed-lines-bg"></div>
+                <div class="narrator-box">¡Una Alianza Inesperada!</div>
+                <div class="panel-header z-up">
+                    <div class="speech-bubble">"Necesito ver una materia urgente, pero en la Nacho no abrieron cupos. ¡Auxilio!"</div>
+                    <div class="character-crop" style="background-color: #ff9900;"><img src="jaimimito_feliz.png" alt="Feliz"></div>
                 </div>
-                <h2>CONVENIO SUMA 🤝</h2>
-                <ul class="content-list">
+                <h2 class="z-up">CONVENIO SUMA 🤝</h2>
+                <ul class="content-list z-up">
                     <li><strong>El Superpoder de Manizales:</strong> Alianza para cursar materias en otras Ues de la ciudad (Caldas, Católica, etc.) ¡Sin pagar extra!</li>
                 </ul>
-                <div class="action-box">
+                <div class="action-box z-up">
                     <strong>¿A DÓNDE VOY? 🖱️</strong> Envía solicitud vía GEA al Comité Asesor para asegurar que te la puedan homologar.
                 </div>
             </div>
         </div>
 
         <!-- DIAPOSITIVAS 9 a 13 -->
-        <div class="slide"><div class="comic-panel"><h2>LOS PORTALES OFICIALES 💻</h2><ul class="content-list"><li><strong>SIA:</strong> Sistema de Información Académica.</li><li><strong>GEA:</strong> Gestión Estudiantil.</li><li><strong>DAMA:</strong> Dirección Académica.</li></ul></div></div>
-        <div class="slide"><div class="comic-panel"><h2>GLOSARIO DE SUPERVIVENCIA 📖</h2><ul class="content-list"><li><strong>Primíparo:</strong> Estudiante de primer semestre.</li><li><strong>Historia Académica:</strong> Tu expediente de vida.</li><li><strong>Comité Asesor:</strong> Quienes aprueban tus locuras.</li></ul></div></div>
-        <div class="slide"><div class="comic-panel"><h2>CHECKLIST DE INICIO ✅</h2><ul class="content-list"><li>[ ] Conozco mi PBM y pagué matrícula.</li><li>[ ] Sé ingresar al SIA.</li><li>[ ] Ubiqué mi salón (para no perderme).</li></ul></div></div>
-        <div class="slide"><div class="comic-panel"><div class="burst" style="background: var(--success); right: auto; left: -10px; top: 10px;">¡FIN!</div><h2>CONCLUSIÓN 🏁</h2><p style="font-size: clamp(1.2rem, 3vw, 1.5rem); margin-top: 20px;">Sobrevivir a la UNAL no requiere magia, solo leer el calendario y conocer tus portales. ¡El SIA es tu mejor amigo!</p></div></div>
-        <div class="slide"><div class="comic-panel" style="text-align: center; justify-content: center;"><h2>ENTREGABLE COMPLETADO 🎯</h2><p style="font-size: clamp(1.2rem, 3vw, 1.5rem);"><strong>Cátedra Nacional de Inducción</strong><br>Universidad Nacional de Colombia<br>Sede Manizales</p></div></div>
+        <div class="slide"><div class="comic-panel action-panel"><div class="speed-lines-bg"></div><div class="narrator-box">La Red de Información...</div><h2 class="z-up">LOS PORTALES OFICIALES 💻</h2><ul class="content-list z-up"><li><strong>SIA:</strong> Sistema de Información Académica.</li><li><strong>GEA:</strong> Gestión Estudiantil.</li><li><strong>DAMA:</strong> Dirección Académica.</li></ul></div></div>
+        <div class="slide"><div class="comic-panel action-panel"><div class="speed-lines-bg"></div><div class="narrator-box">El Lenguaje Secreto...</div><h2 class="z-up">GLOSARIO DE SUPERVIVENCIA 📖</h2><ul class="content-list z-up"><li><strong>Primíparo:</strong> Estudiante de primer semestre.</li><li><strong>Historia Académica:</strong> Tu expediente de vida.</li><li><strong>Comité Asesor:</strong> Quienes aprueban tus locuras.</li></ul></div></div>
+        <div class="slide"><div class="comic-panel action-panel"><div class="speed-lines-bg"></div><div class="narrator-box">Preparativos Finales...</div><h2 class="z-up">CHECKLIST DE INICIO ✅</h2><ul class="content-list z-up"><li>[ ] Conozco mi PBM y pagué matrícula.</li><li>[ ] Sé ingresar al SIA.</li><li>[ ] Ubiqué mi salón (para no perderme).</li></ul></div></div>
+        <div class="slide"><div class="comic-panel action-panel"><div class="speed-lines-bg"></div><div class="narrator-box">El Camino del Héroe...</div><div class="burst" style="background: var(--success); right: auto; left: -10px; top: 10px;">¡FIN!</div><h2 class="z-up">CONCLUSIÓN 🏁</h2><p class="z-up" style="font-size: clamp(1.2rem, 3vw, 1.5rem); margin-top: 20px;">Sobrevivir a la UNAL no requiere magia, solo leer el calendario y conocer tus portales. ¡El SIA es tu mejor amigo!</p></div></div>
+        <div class="slide"><div class="comic-panel action-panel" style="text-align: center; justify-content: center;"><div class="speed-lines-bg"></div><div class="narrator-box">Misión Cumplida...</div><h2 class="z-up">ENTREGABLE COMPLETADO 🎯</h2><p class="z-up" style="font-size: clamp(1.2rem, 3vw, 1.5rem);"><strong>Cátedra Nacional de Inducción</strong><br>Universidad Nacional de Colombia<br>Sede Manizales</p></div></div>
 
         <!-- CONTROLES -->
         <div class="controls">
