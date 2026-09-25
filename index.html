@@ -1164,7 +1164,13 @@
             transform: scale(1.15) rotate(0deg);
             filter: drop-shadow(8px 8px 0px var(--dark));
         }
-        
+        /* Ajuste específico para el escudo del Capitán América en la Diapositiva 7 */
+        .slide:nth-child(7) .hero-logo {
+            top: 15px; /* Lo bajamos para que encaje dentro del panel */
+            right: 20px;
+            width: 100px; /* Tamaño controlado */
+            transform: rotate(0deg); /* Sin inclinación para que se acople a las grietas */
+        }
         @media (max-width: 768px) {
             .panel-header { grid-template-columns: 1fr; justify-items: center; gap: 6px; }
             .speech-bubble::after {
@@ -1209,9 +1215,10 @@
             <!-- Aplicamos clases hulk-bg y hulk-panel -->
             <div class="comic-panel action-panel hulk-bg hulk-panel" style="justify-content: flex-start; align-items: flex-start; padding: 30px; overflow: visible;">
                
-                <img src="logo_hulk.png" alt="Logo Hulk" class="hero-logo">
+                <!-- HULK MÁS GRANDE Y MAJESTUOSO -->
+                <img src="logo_hulk.png" alt="Logo Hulk" class="hero-logo" style="width: clamp(120px, 15vw, 170px); top: 10px; right: 15px; transform: rotate(-5deg);">
                 
-                <div class="narrator-box" style="background-color: #39FF14; color: var(--dark); top: -15px; left: 30px;">Día 1: Exposición a la Radiación...</div>
+                <div class="narrator-box" style="background-color: #39FF14; color: var(--dark); top: -20px; left: 30px;">Día 1: Exposición a la Radiación...</div>
                 
                 <h2 class="gamma-title z-up">¡ALERTA PRIMÍPARO! ☢️</h2>
                 
@@ -1428,7 +1435,7 @@
         <!-- DIAPOSITIVA 8 -->
         <div class="slide">
             <div class="comic-panel action-panel f4-bg f4-panel" style="justify-content: center; align-items: center; padding: 30px; overflow: visible;">
-                <img src="logo_4f.png" alt="Logo Los 4 Fantasticos" class="hero-logo">
+                <img src="logo_4f.png" alt="Logo Los 4 Fantasticos" class="hero-logo" style="top: 15px; right: 20px;">
                 
                 <div class="narrator-box" style="background-color: #FFF; color: #0033A0; top: -20px; left: 30px; border-color: #111;">¡Una Alianza Inesperada!</div>
                 
