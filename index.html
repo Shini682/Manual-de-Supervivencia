@@ -347,15 +347,19 @@
             z-index: 40;
         }
 
-        .origin-burst {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            padding: 20px 30px;
-            top: -30px;
-            left: -30px;
-            box-shadow: 8px 8px 0 var(--dark);
-            z-index: 40;
+       .origin-burst {
+            position: absolute;
+            top: 15px;
+            left: -15px; /* Para que sobresalga agresivamente del borde */
+            font-family: 'Bangers', cursive;
+            font-size: clamp(2.5rem, 6vw, 4.5rem); /* Tamaño gigante */
             background-color: #fff;
             color: var(--dark);
+            border: 6px solid var(--dark);
+            padding: 5px 25px;
+            box-shadow: 8px 8px 0 var(--dark);
+            z-index: 50;
+            transform: rotate(-12deg); /* Inclinación dramática */
         }
 
         .marvel-title {
@@ -382,8 +386,7 @@
         <div class="slide active">
             <div class="comic-panel title-panel spidey-bg" style="justify-content: center; text-align: center; overflow: visible;">
                 
-                <!-- ¡EL ORIGEN! convertido en onomatopeya gigante -->
-                <div class="burst origin-burst" style="position: absolute; transform: rotate(-15deg) !important;">¡EL ORIGEN!</div>
+                <div class="origin-burst">¡EL ORIGEN!</div>
                 
                 <!-- Onomatopeya THWIP -->
                 <div class="burst giant-burst" style="background: var(--primary); color: var(--dark); position: absolute; transform: scale(1.1) rotate(20deg) !important;">¡THWIP!</div>
