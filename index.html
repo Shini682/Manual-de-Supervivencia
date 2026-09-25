@@ -512,6 +512,57 @@
             font-size: clamp(1rem, 2vw, 1.2rem) !important;
         }
 
+        /* --- ANIMACIONES DE RAYOS Y MJOLNIR --- */
+        
+        /* El relámpago que ilumina toda la viñeta */
+        @keyframes lightning-strike {
+            0%, 88% { opacity: 0; }
+            90% { opacity: 1; background: rgba(0, 229, 255, 0.7); } /* Primer destello cian */
+            92% { opacity: 0; }
+            94% { opacity: 1; background: rgba(255, 255, 255, 0.9); } /* Segundo destello blanco nuclear */
+            100% { opacity: 0; }
+        }
+
+        .lightning-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 8; /* Debajo de los textos, pero sobre el fondo */
+            pointer-events: none;
+            animation: lightning-strike 5s infinite;
+        }
+
+        /* La caída del Mjolnir */
+        @keyframes mjolnir-smash {
+            0%, 85% { 
+                transform: translate(200px, -200px) rotate(45deg); 
+                opacity: 0; 
+            }
+            88% { 
+                /* Cae a toda velocidad */
+                transform: translate(0, 0) rotate(-20deg); 
+                opacity: 1; 
+                filter: drop-shadow(0 0 30px #00E5FF);
+            }
+            90% { 
+                /* El impacto exacto sincronizado con el rayo */
+                transform: translate(0, 0) rotate(-20deg) scale(1.2); 
+            }
+            95%, 100% { 
+                /* Se queda reposando un momento antes de repetir */
+                transform: translate(0, 0) rotate(-20deg) scale(1); 
+                opacity: 1; 
+                filter: drop-shadow(6px 6px 0px #023e8a); 
+            }
+        }
+
+        .mjolnir-prop {
+            position: absolute;
+            top: -45px;
+            right: -25px;
+            font-size: 5rem;
+            z-index: 25;
+            animation: mjolnir-smash 5s infinite;
+        }
         
         @media (max-width: 768px) {
             .panel-header { grid-template-columns: 1fr; justify-items: center; gap: 6px; }
@@ -582,9 +633,12 @@
                 
             </div>
         </div>
-        <!-- DIAPOSITIVA 3 -->
+       <!-- DIAPOSITIVA 3 -->
         <div class="slide">
             <div class="comic-panel action-panel thor-bg thor-panel" style="justify-content: center; align-items: center; padding: 30px; overflow: visible;">
+                
+                <!-- El destello del relámpago -->
+                <div class="lightning-overlay"></div>
                 
                 <div class="narrator-box" style="background-color: #00E5FF; color: var(--dark); top: -20px; left: 30px;">Forjando un Destino...</div>
                 
@@ -595,11 +649,8 @@
                     </div>
                     <div class="speech-bubble" style="border-color: #00E5FF; box-shadow: 5px 5px 0 #023e8a; flex-grow: 1;">
                         "¡Quiero estudiar dos carreras al tiempo y no morir en el intento! ¿Se puede?"
-                        <!-- Colita del globo ajustada para que apunte a la izquierda -->
                         <style>
-                            .speech-bubble.thor-bubble::after {
-                                right: auto; left: -15px; top: 50%; border-width: 10px 15px 10px 0; border-color: transparent #00E5FF transparent transparent;
-                            }
+                            .speech-bubble::after { /* Corrección de la colita para que solo aplique aquí si lo deseas, o usa una clase específica */ }
                         </style>
                     </div>
                 </div>
@@ -607,7 +658,11 @@
                 <h2 class="thunder-title z-up">DOBLE TITULACIÓN ⚡🎓</h2>
                 
                 <!-- Caja eléctrica con toda la info junta -->
-                <div class="electric-box z-up">
+                <div class="electric-box z-up" style="position: relative;">
+                    
+                    <!-- EL MJOLNIR CAYENDO SOBRE LA CAJA -->
+                    <div class="mjolnir-prop">🔨</div>
+
                     <ul class="content-list" style="margin-bottom: 0;">
                         <li><strong>La Regla de Oro:</strong> Estar matriculado, no estar graduado y revisar las fechas del calendario.</li>
                         <li><strong>El Reto:</strong> Necesitas disponer de cupo de créditos. ¡Solo te salvas si tu P.A.P.A es mayor o igual a 4.3!</li>
