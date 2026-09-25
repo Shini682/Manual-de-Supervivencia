@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manual de Supervivencia UNAL</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@700&display=@meswap');
 
         :root {
             --primary: #FFd700;
@@ -1171,13 +1171,88 @@
             width: 100px; /* Tamaño controlado */
             transform: rotate(0deg); /* Sin inclinación para que se acople a las grietas */
         }
-        @media (max-width: 768px) {
-            .panel-header { grid-template-columns: 1fr; justify-items: center; gap: 6px; }
-            .speech-bubble::after {
-                right: 50%; top: auto; bottom: -10px; transform: translateX(50%);
-                border-width: 10px 10px 0 10px; border-color: var(--dark) transparent transparent transparent;
+        /* ========================================== */
+        /* RESPONSIVE DESIGN PARA MÓVILES (iOS / ANDROID) */
+        /* ========================================== */
+        /* Animación de vibración para el Batarang o logo de la Diapositiva 1 */
+        .slide:first-child .hero-logo, .batarang-logo {
+            animation: batarang-pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes batarang-pulse {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.08) rotate(-3deg); }
+        }
+        @media screen and (max-width: 768px) {
+            /* 1. Ajustar el contenedor general del slide para que no se desborde */
+            .slide {
+                padding: 10px;
+                height: 100vh;
+                box-sizing: border-box;
             }
-            .character-crop { width: 80px; height: 80px; }
+
+            /* 2. Paneles adaptados a la pantalla táctil */
+            .comic-panel {
+                padding: 15px !important;
+                width: 95% !important;
+                max-height: 85vh;
+                overflow-y: auto !important; /* Permite hacer scroll vertical si el contenido es largo en cel */
+            }
+
+            /* 3. Reducir los títulos gigantes para que no rompan pantallas de celular */
+            h2, .gamma-title, .shield-title, .magneto-title, .gl-title {
+                font-size: clamp(1.5rem, 5vw, 2.2rem) !important;
+                margin-top: 15px;
+                margin-bottom: 10px;
+            }
+
+            /* 4. Adaptar los logos de los héroes para que no estorben en móviles */
+            .hero-logo {
+                width: clamp(55px, 15vw, 75px) !important;
+                top: 8px !important;
+                right: 10px !important;
+            }
+
+            /* 5. Cajas de texto y contenido en una sola columna fluida */
+            .content-list, .magneto-list {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 8px !important;
+            }
+
+            .content-list li, .magneto-list li, .gl-box li {
+                font-size: 0.9rem !important;
+                padding: 10px !important;
+            }
+
+            /* 6. Cajas de narrador y acción adaptadas */
+            .narrator-box {
+                font-size: 0.8rem !important;
+                padding: 4px 10px !important;
+                top: -12px !important;
+                left: 15px !important;
+            }
+
+            .action-box {
+                font-size: 0.85rem !important;
+                padding: 10px !important;
+            }
+
+            /* 7. Controles inferiores (Botones Anterior / Siguiente / Contador) */
+            .controls {
+                gap: 10px;
+                bottom: 10px;
+            }
+
+            .controls button {
+                padding: 8px 12px;
+                font-size: 0.85rem;
+            }
+
+            .counter {
+                font-size: 0.9rem;
+                padding: 4px 8px;
+            }
         }
     </style>
 </head>
@@ -1185,20 +1260,20 @@
 
     <div id="slider-container">
       
-        <!-- DIAPOSITIVA 1 -->
-        <div class="slide active">
-            <div class="comic-panel title-panel spidey-bg" style="justify-content: center; text-align: center; overflow: visible;">
+        <div class="slide">
+            <div class="comic-panel action-panel cover-bg cover-panel" style="justify-content: center; align-items: center; text-align: center; padding: 40px; overflow: visible;">
                 
-                <div class="origin-burst">¡EL ORIGEN!</div>
+                <!-- Batarang con su animación restaurada -->
+                <img src="batarang.png" alt="Batarang" class="hero-logo batarang-logo">
                 
-                <!-- THWIP corregido -->
-                <div class="burst giant-burst" style="background: var(--primary); color: var(--dark); position: absolute; transform: scale(1.1) rotate(15deg) !important;">¡THWIP!</div>
+                <div class="narrator-box" style="background-color: #FFF; color: #000; top: 20px; left: 30px; border-color: #000;">¡EL ORIGEN!</div>
                 
-                <div style="margin-top: 50px; z-index: 5;">
-                    <h1 class="marvel-title z-up" style="font-size: clamp(2.5rem, 7vw, 4rem); position: relative; z-index: 5;">MANUAL DE SUPERVIVENCIA UNAL</h1>
-                </div>
+                <h1 class="cover-title z-up" style="font-size: clamp(2.5rem, 6vw, 4.5rem); color: #fff; text-shadow: 4px 4px 0 #000; margin: 20px 0;">
+                    MANUAL DE SUPERVIVENCIA UNAL
+                </h1>
                 
-                <h2 class="z-up" style="font-size: clamp(1.2rem, 3.5vw, 1.8rem); color: #FFD700; text-shadow: 3px 3px 0 var(--dark); background: rgba(0,0,0,0.6); padding: 5px 10px; display: inline-block; margin: 10px auto;">"Lo que debes saber en la universidad"</h2>
+                <div class="action-box z-up" style="background-color: #000; color: #FFCC00; border-color: #FFCC00; display: inline-block; padding: 10px 20px;">
+                    "LO QUE DEBES SABER EN LA UNIVERSIDAD"
                 
                 <!-- El Batarang gigante con la clase animada -->
                 <img src="Batarang.png" alt="Batarang" class="batarang-prop z-up">
@@ -1491,30 +1566,29 @@
         <!-- DIAPOSITIVA 10 (MAGNETO) -->
         <div class="slide">
             <div class="comic-panel action-panel magneto-bg magneto-panel" style="justify-content: center; align-items: center; padding: 30px; overflow: visible;">
-                <img src="logo_magneto.png" alt="Logo Magneto" class="hero-logo">
+                
+                <!-- CASCO DE MAGNETO BIEN UBICADO Y VISIBLE -->
+                <img src="logo_magneto.png" alt="Logo Magneto" class="hero-logo" style="top: 20px; right: 25px; width: clamp(80px, 10vw, 110px);">
                 
                 <div class="narrator-box" style="background-color: #A0AEC0; color: #4A0E4E; top: -20px; left: 30px; border-color: #4A0E4E;">El Lenguaje Secreto...</div>
                 
                 <h2 class="magneto-title z-up">GLOSARIO DE SUPERVIVENCIA 📖</h2>
                 
-                <!-- Caja levitando con el poder del magnetismo -->
-                <!-- Caja levitando con el poder del magnetismo -->
                 <div class="magneto-box z-up">
                     <ul class="content-list magneto-list" style="margin-bottom: 0;">
                         <li><strong>Primíparo:</strong> Estudiante de primer semestre.</li>
                         <li><strong>Historia Académica:</strong> Tu expediente de vida y batallas en la universidad.</li>
                         <li><strong>Comité Asesor:</strong> Quienes aprueban tus solicitudes y misiones mutantes.</li>
                         <li><strong>SIA:</strong> Tu centro de mando. Si el trámite no está en el SIA, no existe.</li>
-                        <li><strong>P.A.P.A.:</strong> Tu promedio acumulado. ¡Mantenlo siempre arriba de 3.0!</li>
+                        <li><strong>P.A.P.A.:</strong> Tu nivel de poder acumulado. ¡Mantenlo siempre arriba de 3.0!</li>
                         <li><strong>PBM:</strong> Puntaje Básico de Matrícula. Define el costo de tu semestre.</li>
                         <li><strong>Cancelación:</strong> Retirada táctica de una materia para salvar tu promedio.</li>
                         <li><strong>Reserva de Cupo:</strong> Poder para congelar tu semestre y volver a luchar otro día.</li>
                     </ul>
                     <div class="action-box magneto-action" style="margin-top: 5px;">
-                        <strong>¡CONSEJO! 💡</strong> Nunca preguntes en el intercampus donde puede dejarte y mucho menos toques el timbre (HABLO ENSERIO)
+                        <strong>¡CONSEJO! 💡</strong> Nunca preguntes en el intercampus dónde puede dejarte y mucho menos toques el timbre (HABLO ENSERIO).
                     </div>
                 </div>
-                
             </div>
         </div>
         <!-- DIAPOSITIVA 11 (LINTERNA VERDE) -->
