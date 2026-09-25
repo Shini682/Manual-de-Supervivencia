@@ -837,6 +837,74 @@
             transform: translateY(-4px);
             box-shadow: 0 10px 0 #001489;
         }
+
+        /* --- ESTILOS ESPECÍFICOS VIÑETA 8 (LOS 4 FANTÁSTICOS) --- */
+        .f4-bg {
+            background-color: #0033A0; /* Azul clásico de los 4 Fantásticos */
+            background-image: 
+                /* Resplandor de rayos cósmicos y red molecular */
+                radial-gradient(circle at 50% 50%, rgba(255,255,255,0.2) 0%, transparent 70%),
+                linear-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+            background-size: 100% 100%, 40px 40px, 40px 40px;
+        }
+
+        .f4-panel {
+            border-color: #111;
+            border-width: 8px;
+            box-shadow: 12px 12px 0 #FFF; /* Sombra blanca gruesa para resaltar sobre el azul */
+        }
+
+        .f4-title {
+            color: #0033A0;
+            font-family: 'Bangers', cursive;
+            text-transform: uppercase;
+            /* Delineado blanco con sombra negra gruesa */
+            text-shadow: 2px 2px 0 #FFF, -2px -2px 0 #FFF, 2px -2px 0 #FFF, -2px 2px 0 #FFF, 6px 6px 0 #111;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 15px;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        /* Recorte especial imitando el logo del "4" (Círculo azul con borde blanco) */
+        .f4-crop {
+            border: 6px solid #FFF !important;
+            background-color: #0033A0 !important;
+            border-radius: 50% !important;
+            /* Doble borde para imitar el traje */
+            box-shadow: 0 0 0 6px #0033A0, 6px 6px 0 6px #111 !important; 
+        }
+
+        /* Contenedor tecnológico (Edificio Baxter) */
+        .f4-box {
+            background-color: #f4f4f5;
+            border: 5px solid #0033A0;
+            padding: 15px;
+            box-shadow: 8px 8px 0 #111;
+            width: 100%;
+            max-width: 750px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 10;
+            border-radius: 12px; /* Un poco más estilizado/tech */
+        }
+
+        .f4-action {
+            background-color: #0033A0 !important;
+            color: #FFF !important;
+            border-color: #111 !important;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .f4-action:hover {
+            background-color: #FF4500 !important; /* ¡Llamas a mí! (Antorcha Humana) */
+            color: #FFF !important;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px #FF4500, 5px 5px 0 #111; /* Resplandor de fuego */
+        }
         
         @media (max-width: 768px) {
             .panel-header { grid-template-columns: 1fr; justify-items: center; gap: 6px; }
@@ -1094,20 +1162,37 @@
 
         <!-- DIAPOSITIVA 8 -->
         <div class="slide">
-            <div class="comic-panel action-panel">
-                <div class="speed-lines-bg"></div>
-                <div class="narrator-box">¡Una Alianza Inesperada!</div>
-                <div class="panel-header z-up">
-                    <div class="speech-bubble">"Necesito ver una materia urgente, pero en la Nacho no abrieron cupos. ¡Auxilio!"</div>
-                    <div class="character-crop" style="background-color: #ff9900;"><img src="jaimimito_feliz.png" alt="Feliz"></div>
+            <div class="comic-panel action-panel f4-bg f4-panel" style="justify-content: center; align-items: center; padding: 30px; overflow: visible;">
+                
+                <div class="narrator-box" style="background-color: #FFF; color: #0033A0; top: -20px; left: 30px; border-color: #111;">¡Una Alianza Inesperada!</div>
+                
+                <!-- Encabezado horizontal compacto: Personaje + Globo -->
+                <div class="panel-header z-up" style="width: 100%; max-width: 750px; display: flex; align-items: center; gap: 25px; margin-bottom: 20px; grid-template-columns: auto 1fr;">
+                    
+                    <div class="character-crop f4-crop" style="width: 130px; height: 130px;">
+                        <img src="jaimimito_feliz.png" alt="Feliz" style="transform: scale(1.15); margin-top: 8px;">
+                    </div>
+                    
+                    <div class="speech-bubble f4-bubble" style="border-color: #0033A0; box-shadow: 5px 5px 0 #111; flex-grow: 1;">
+                        "Necesito ver una materia urgente, pero en la Nacho no abrieron cupos. ¡Auxilio!"
+                        <style>
+                            .f4-bubble::after { right: auto; left: -15px; top: 50%; border-width: 10px 15px 10px 0; border-color: transparent #0033A0 transparent transparent; }
+                        </style>
+                    </div>
                 </div>
-                <h2 class="z-up">CONVENIO SUMA 🤝</h2>
-                <ul class="content-list z-up">
-                    <li><strong>El Superpoder de Manizales:</strong> Alianza para cursar materias en otras Ues de la ciudad. ¡Sin pagar extra!</li>
-                </ul>
-                <div class="action-box z-up">
-                    <strong>¿A DÓNDE VOY? 🖱️</strong> Envía solicitud vía GEA al Comité Asesor para asegurar que te la puedan homologar.
+
+                <h2 class="f4-title z-up">CONVENIO SUMA 🤝</h2>
+                
+                <!-- Caja de información (Edificio Baxter) -->
+                <div class="f4-box z-up">
+                    <ul class="content-list" style="margin-bottom: 0;">
+                        <li style="border-color: #0033A0;"><strong>El Superpoder de Manizales:</strong> Alianza para cursar materias en otras Ues de la ciudad. ¡Sin pagar extra!</li>
+                    </ul>
+                    <div class="action-box f4-action">
+                        <strong>¿A DÓNDE VOY? 🖱️</strong> Envía solicitud vía GEA al Comité Asesor para asegurar que te la puedan homologar.
+                    </div>
                 </div>
+                
             </div>
         </div>
 
