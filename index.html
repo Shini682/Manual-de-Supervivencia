@@ -393,6 +393,71 @@
             text-shadow: 4px 4px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
             letter-spacing: 3px;
         }
+
+        /* --- ESTILOS ESPECÍFICOS VIÑETA 2 (HULK) --- */
+        .hulk-bg {
+            /* Rayos morados de fondo y un brillo verde radiactivo detrás de Jaimimito */
+            background-color: #4B0082; 
+            background-image: 
+                radial-gradient(circle at 85% 90%, #39FF14 0%, transparent 60%), 
+                repeating-conic-gradient(from 0deg, rgba(128, 0, 128, 0.9) 0deg 15deg, rgba(75, 0, 130, 0.9) 15deg 30deg);
+        }
+
+        .hulk-panel {
+            border-color: #39FF14; /* Borde verde tóxico */
+            border-width: 8px;
+        }
+
+        .gamma-title {
+            color: #39FF14;
+            font-family: 'Bangers', cursive;
+            text-transform: uppercase;
+            text-shadow: 4px 4px 0 var(--dark), -1px -1px 0 var(--dark), 1px -1px 0 var(--dark), -1px 1px 0 var(--dark), 1px 1px 0 var(--dark);
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            transform: rotate(-2deg);
+            margin-bottom: 15px;
+            margin-top: 10px;
+        }
+
+        /* Caja para juntar toda la información a la izquierda */
+        .info-box {
+            background-color: #fff;
+            border: 5px solid var(--dark);
+            padding: 20px;
+            box-shadow: 8px 8px 0 var(--dark);
+            width: 70%; /* Limita el ancho para que no invada a Jaimimito */
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 10;
+            transform: skew(-2deg);
+        }
+
+        .info-box > * {
+            transform: skew(2deg); /* Endereza las letras adentro */
+        }
+
+        /* Jaimimito Consultor Gigante */
+        .consultant-crop {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 220px; /* Tamaño masivo */
+            height: 220px;
+            border: 6px solid #39FF14; /* Marco radiactivo */
+            border-radius: 50%; 
+            box-shadow: -8px 8px 0 var(--dark);
+            background-color: #fff;
+            z-index: 20;
+            overflow: hidden;
+            transform: rotate(-5deg); /* Ligera inclinación rebelde */
+        }
+
+        .consultant-crop img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
         
         @media (max-width: 768px) {
             .panel-header { grid-template-columns: 1fr; justify-items: center; gap: 6px; }
@@ -433,20 +498,36 @@
             </div>
         </div>
         
-        <!-- DIAPOSITIVA 2 -->
+       <!-- DIAPOSITIVA 2 -->
         <div class="slide">
-            <div class="comic-panel action-panel">
-                <div class="speed-lines-bg"></div>
-                <div class="narrator-box">Día 1 en el Campus...</div>
-                <h2 class="z-up">¡ALERTA PRIMÍPARO! 🚨</h2>
-                <p class="z-up" style="font-size: clamp(0.95rem, 2.2vw, 1.1rem); line-height: 1.3;">La Universidad Nacional no es solo estudiar, es aprender a sobrevivir a sus trámites. Si no quieres perderte en el laberinto administrativo, este manual es tu mejor arma.</p>
-                <p class="z-up" style="font-size: clamp(0.95rem, 2.2vw, 1.1rem); font-weight: bold;">En las siguientes viñetas aprenderás a dominar 6 procesos vitales. ¡Acompáñame!</p>
-                <div class="character-crop z-up" style="margin: 5px auto; border-radius: 50%;">
-                    <img src="jaimimito_normal.png" alt="Jaimimito Normal">
+            <!-- Aplicamos clases hulk-bg y hulk-panel -->
+            <div class="comic-panel action-panel hulk-bg hulk-panel" style="justify-content: flex-start; align-items: flex-start; padding: 30px;">
+                
+                <div class="narrator-box" style="background-color: #39FF14; color: var(--dark); top: -15px; left: 30px;">Día 1: Exposición a la Radiación...</div>
+                
+                <h2 class="gamma-title z-up">¡ALERTA PRIMÍPARO! ☢️</h2>
+                
+                <!-- Toda la info agrupada y compacta -->
+                <div class="info-box z-up">
+                    <p style="font-size: clamp(1.1rem, 2.5vw, 1.3rem); line-height: 1.4; font-weight: bold;">
+                        La Universidad Nacional no es solo estudiar, es aprender a sobrevivir a sus trámites. 
+                    </p>
+                    <p style="font-size: clamp(1rem, 2.2vw, 1.2rem); line-height: 1.4;">
+                        Si no quieres perderte en el laberinto administrativo (y terminar más verde de rabia que Hulk), este manual es tu mejor arma.
+                    </p>
+                    <!-- Llamado a la acción tipo cómic -->
+                    <div style="background-color: #800080; color: #fff; padding: 10px; border: 3px solid var(--dark); font-family: 'Bangers', cursive; font-size: 1.3rem; letter-spacing: 1px; transform: rotate(1deg); text-align: center; margin-top: 10px;">
+                        ¡En las siguientes viñetas aprenderás a dominar 6 procesos vitales!
+                    </div>
                 </div>
+
+                <!-- Jaimimito Consultor (Abajo a la derecha) -->
+                <div class="consultant-crop">
+                    <img src="jaimimito_normal.png" alt="Jaimimito Consultor">
+                </div>
+                
             </div>
         </div>
-
         <!-- DIAPOSITIVA 3 -->
         <div class="slide">
             <div class="comic-panel action-panel">
